@@ -1,0 +1,20 @@
+.photo__card-remove {
+  background-image: url(../../../images/Trash.svg);
+  background-repeat: no-repeat;
+  background-size: 18px 19px;
+  background-color: transparent;
+  font-size: 0;
+  width: 18px;
+  height: 19px;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 0;
+  transition: opacity 1s linear;
+}
+
+.photo__card-remove:hover {
+  opacity: 0.5;
+}

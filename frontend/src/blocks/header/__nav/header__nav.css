@@ -1,0 +1,11 @@
+.header__nav {
+  display: flex;
+  color: white;
+  align-self: center;
+}
+
+@media screen and (max-width: 880px) {
+  .header__nav {
+    padding-right: 15px;
+  }
+}
