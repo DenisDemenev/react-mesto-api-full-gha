@@ -8,7 +8,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 130.193.42.29
+IP 130.193.42.29
 
 Frontend https://denisd.nomoredomains.monster
 
