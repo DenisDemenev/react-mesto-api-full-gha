@@ -8,8 +8,8 @@
 
 ## Ссылки на проект
 
-IP-адрес 91.226.83.6
+IP-адрес 130.193.42.29
 
-Frontend https://ekbtoys.ru
+Frontend https://denisd.nomoredomains.monster
 
-Backend https://api.ekbtoys.ru
+Backend https://api.denisd.nomoredomains.monster

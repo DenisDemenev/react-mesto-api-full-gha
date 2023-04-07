@@ -17,7 +17,7 @@ mongoose
   .catch((err) => console.log(`Ошибка подключения к БД: ${err}`));
 
 const app = express();
-app.use(cors({ origin: ['http://localhost:3001', 'https://ekbtoys.ru', 'http://ekbtoys.ru'], credentials: true }));
+app.use(cors({ origin: ['http://localhost:3001', 'https://denisd.nomoredomains.monster', 'http://denisd.nomoredomains.monster'], credentials: true }));
 
 app.use(express.json());
 app.use(requestLogger);
