@@ -1,5 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
+require('dotenv').config();
 const { errors } = require('celebrate');
 const auth = require('./middlewares/auth');
 const NotFoundError = require('./errors/NotFoundError');
@@ -15,10 +17,16 @@ mongoose
   .catch((err) => console.log(`Ошибка подключения к БД: ${err}`));
 
 const app = express();
+app.use(cors({ origin: ['http://localhost:3001', 'https://ekbtoys.ru', 'http://ekbtoys.ru'], credentials: true }));
 
 app.use(express.json());
-
 app.use(requestLogger);
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.post('/signin', signInValidation, login);
 
