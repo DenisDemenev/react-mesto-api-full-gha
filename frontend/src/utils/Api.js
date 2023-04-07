@@ -75,9 +75,10 @@ class Api {
 }
 
 const api = new Api({
-  url: 'http://localhost:3000/',
+  url: 'https://api.denisd.nomoredomains.monster/',
   headers: {
     'content-type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
   },
 });
 export default api;
