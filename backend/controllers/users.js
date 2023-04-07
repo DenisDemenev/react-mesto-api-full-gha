@@ -129,7 +129,7 @@ module.exports.login = async (req, res, next) => {
     const user = await User.findUserByCredentials(email, password);
     const token = jwt.sign(
       { _id: user._id },
-      process.env.NODE_ENV !== 'production'
+      process.env.NODE_ENV === 'production'
         ? process.env.JWT_SECRET
         : 'dev-secret',
       {
