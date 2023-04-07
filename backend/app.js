@@ -1,4 +1,3 @@
-require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -8,8 +7,7 @@ const NotFoundError = require('./errors/NotFoundError');
 const { login, createUser } = require('./controllers/users');
 const { requestLogger, errorsLogger } = require('./middlewares/loggers');
 const { signUpValidation, signInValidation } = require('./middlewares/validation');
-
-const { PORT = 3000 } = process.env;
+const { PORT } = require('./config');
 
 mongoose
   .connect('mongodb://127.0.0.1:27017/mestodb')
