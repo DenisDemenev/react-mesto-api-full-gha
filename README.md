@@ -4,12 +4,12 @@
   
 Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
 
-Адрес репозитория: https://github.com/...
+Адрес репозитория: https://github.com/DenisDemenev/react-mesto-api-full-gha
 
 ## Ссылки на проект
 
-IP-адрес x.x.x.x
+IP-адрес 91.226.83.6
 
-Frontend https://...
+Frontend https://ekbtoys.ru
 
-Backend https://...
+Backend https://api.ekbtoys.ru
