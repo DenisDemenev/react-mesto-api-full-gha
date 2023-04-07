@@ -17,7 +17,7 @@ mongoose
   .catch((err) => console.log(`Ошибка подключения к БД: ${err}`));
 
 const app = express();
-app.use(cors({ origin: ['http://localhost:3001', 'https://denisd.nomoredomains.monster', 'http://denisd.nomoredomains.monster'], credentials: true }));
+app.use(cors({ origin: ['https://denisd.nomoredomains.monster', 'http://denisd.nomoredomains.monster'], credentials: true }));
 
 app.use(express.json());
 app.use(requestLogger);
@@ -35,8 +35,8 @@ app.post('/signup', signUpValidation, createUser);
 app.use('/users', auth, require('./routes/users'));
 app.use('/cards', auth, require('./routes/cards'));
 
-app.use('*', () => {
-  throw new NotFoundError('Страница не найдена');
+app.use('*', (req, res, next) => {
+  next(new NotFoundError('Страница не найдена'));
 });
 
 app.use(errorsLogger);

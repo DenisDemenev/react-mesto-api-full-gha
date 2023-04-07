@@ -23,9 +23,6 @@ module.exports.createUser = async (req, res, next) => {
   } = req.body;
   try {
     const user = await User.findOne({ email });
-    if (user) {
-      throw new ConflictError('Такой email уже зарегистрирован');
-    }
     const hash = await bcrypt.hash(password, 10);
     const createdUser = await User.create({
       name,
@@ -127,7 +124,9 @@ module.exports.login = async (req, res, next) => {
   const { email, password } = req.body;
   try {
     const user = await User.findUserByCredentials(email, password);
-    const token = jwt.sign({ _id: user._id }, 'super-secret-key', {
+    const token = jwt.sign({ _id: user._id }, 
+      process.env.NODE_ENV === 'production' ?
+      process.env.JWT_SECRET : 'dev-secret', {
       expiresIn: '7d',
     });
     res.send({ token });
