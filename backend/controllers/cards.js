@@ -8,7 +8,7 @@ const CREATED = 201;
 module.exports.getCards = async (req, res, next) => {
   try {
     const cards = await card.find({}).populate(['owner', 'likes']);
-    res.send({ cards });
+    res.send(cards);
   } catch (err) {
     next(err);
   }
@@ -18,7 +18,7 @@ module.exports.createCard = async (req, res, next) => {
   try {
     const { name, link } = req.body;
     const newCard = await card.create({ name, link, owner: req.user._id });
-    res.status(CREATED).send({ newCard });
+    res.status(CREATED).send(newCard);
   } catch (err) {
     if (err.name === 'ValidationError') {
       next(
@@ -44,7 +44,7 @@ module.exports.removeCard = async (req, res, next) => {
     }
 
     await card.deleteOne(removedCard);
-    return res.send({ removedCard });
+    return res.send(removedCard);
   } catch (err) {
     if (err.name === 'CastError') {
       return next(new BadRequestError('Карточка с указанным _id не найдена.'));
@@ -63,7 +63,7 @@ module.exports.addLike = async (req, res, next) => {
     if (!updatedCard) {
       next(new NotFoundError('Передан несуществующий _id карточки.'));
     }
-    res.send({ updatedCard });
+    res.send(updatedCard);
   } catch (err) {
     if (err.name === 'CastError') {
       next(new BadRequestError('Передан несуществующий _id карточки.'));
@@ -83,7 +83,7 @@ module.exports.removeLike = async (req, res, next) => {
     if (!updatedCard) {
       next(new NotFoundError('Передан несуществующий _id карточки.'));
     } else {
-      res.send({ updatedCard });
+      res.send(updatedCard);
     }
   } catch (err) {
     if (err.name === 'CastError') {

@@ -11,7 +11,7 @@ const CREATED = 201;
 module.exports.getUsers = async (req, res, next) => {
   try {
     const users = await User.find({});
-    res.send({ users });
+    res.send(users);
   } catch (err) {
     next(err);
   }
@@ -61,7 +61,7 @@ module.exports.getUser = async (req, res, next) => {
     if (!user) {
       throw new NotFoundError('Пользователь по указанному _id не найден');
     }
-    res.send({ user });
+    res.send(user);
   } catch (err) {
     if (err.name === 'CastError') {
       next(
@@ -85,7 +85,7 @@ module.exports.updateUser = async (req, res, next) => {
     if (!updatedUser) {
       throw new NotFoundError('Пользователь по указанному _id не найден');
     }
-    res.send({ updatedUser });
+    res.send(updatedUser);
   } catch (err) {
     if (err.name === 'ValidationError') {
       next(
@@ -109,7 +109,7 @@ module.exports.updateAvatar = async (req, res, next) => {
     if (!updatedUser) {
       throw new NotFoundError('Пользователь по указанному _id не найден');
     }
-    res.send({ updatedUser });
+    res.send(updatedUser);
   } catch (err) {
     if (err.name === 'ValidationError') {
       next(
@@ -142,7 +142,7 @@ module.exports.getUserInfo = async (req, res, next) => {
     if (!user) {
       throw new NotFoundError('Пользователь по указанному _id не найден');
     }
-    res.send({ user });
+    res.send(user);
   } catch (err) {
     next(err);
   }
